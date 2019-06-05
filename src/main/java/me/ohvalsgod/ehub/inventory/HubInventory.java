@@ -27,28 +27,28 @@ public class HubInventory {
         items.put(40, new ItemBuilder()
                 .withMaterial(Material.INK_SACK)
                 .withData((byte)10)
-                .withDisplayName("§9§l↣ §a§lShow Players §9§l↢")
+                .withDisplayName("§9§l⟹ §a§lShow Players §9§l⟸")
                 .create());
 
         items.put(0, new ItemBuilder()
                 .withMaterial(Material.WATCH)
-                .withDisplayName("§9§l↣ §e§lServer Selector §9§l↢")
+                .withDisplayName("§9§l⟹ §e§lServer Selector §9§l⟸")
                 .create());
 
         items.put(1, new ItemBuilder()
                 .withMaterial(Material.INK_SACK)
                 .withData((byte)8)
-                .withDisplayName("§9§l↣ §7§lHide Players §9§l↢")
+                .withDisplayName("§9§l⟹ §7§lHide Players §9§l⟸")
                 .create());
 
         items.put(4, new ItemBuilder()
                 .withMaterial(Material.FEATHER)
-                .withDisplayName("§9§l↣ §b§lCosmetics §9§l↢")
+                .withDisplayName("§9§l⟹ §b§lCosmetics §9§l⟸")
                 .create());
 
         items.put(8, new ItemBuilder()
                 .withMaterial(Material.ENDER_PEARL)
-                .withDisplayName("§9§l↣ §5§lEnder Butt §9§l↢")
+                .withDisplayName("§9§l⟹ §5§lEnder Butt §9§l⟸")
                 .create());
 
         //  Server selector

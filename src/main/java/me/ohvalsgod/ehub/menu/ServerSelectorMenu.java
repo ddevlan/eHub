@@ -41,7 +41,7 @@ public class ServerSelectorMenu extends Menu {
                         "§7* §b15 minute KOTHs!",
                         "§7* §bOther weekly events!",
                         "",
-                        "§7↣ §eClick to join the queue! §7↢");
+                        "§7⟹ §eClick to join the queue! §7⟸");
             }
 
             @Override
@@ -75,7 +75,7 @@ public class ServerSelectorMenu extends Menu {
                         "§7* §bCheck @twitter for regular updates!!",
                         "§7* §bTop secrete clearance ☺",
                         "",
-                        "§7↣ §eClick to join the queue! §7↢");
+                        "§7⟹ §eClick to join the queue! §7⟸");
             }
 
             @Override

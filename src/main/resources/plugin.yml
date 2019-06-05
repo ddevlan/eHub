@@ -1,0 +1,5 @@
+name: eHub
+version: 1.0
+author: ohvals
+main: me.ohvalsgod.ehub.HubPlugin
+depend: [BukkitLib]

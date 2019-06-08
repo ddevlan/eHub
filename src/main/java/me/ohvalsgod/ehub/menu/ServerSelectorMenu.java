@@ -1,9 +1,12 @@
 package me.ohvalsgod.ehub.menu;
 
+import io.github.thatkawaiisam.redstone.shared.RedstoneSharedAPI;
+import io.github.thatkawaiisam.redstone.shared.server.RedstoneServer;
+import io.github.thatkawaiisam.redstone.shared.server.ServerState;
 import lombok.val;
-import me.ohvalsgod.bklib.menu.Button;
-import me.ohvalsgod.bklib.menu.Menu;
-import me.ohvalsgod.bklib.util.BungeeUtils;
+import me.ohvalsgod.bukkitlib.menu.Button;
+import me.ohvalsgod.bukkitlib.menu.Menu;
+import me.ohvalsgod.bukkitlib.util.BungeeUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -29,24 +32,25 @@ public class ServerSelectorMenu extends Menu {
         buttons.put(11, new Button() {
             @Override
             public String getName(Player player) {
-                return "§a§lHCF";
+                return RedstoneSharedAPI.getServer("HCFactions").getData().getState() != ServerState.OFFLINE ? "§a§lHCFactions":"§c§lHCFactions";
             }
 
             @Override
             public List<String> getDescription(Player player) {
+                RedstoneServer redstoneServer = RedstoneSharedAPI.getServer("HCFactions");
                 return Arrays.asList(
-                        "§ePlayers: §f({current_players}/{max_players})",
+                        String.format("§ePlayers: §f(%s/%s)", redstoneServer.getData().getOnlinePlayers(), redstoneServer.getData().getMaxPlayers()),
                         "",
                         "§7* §b30 man factions!",
                         "§7* §b15 minute KOTHs!",
                         "§7* §bOther weekly events!",
                         "",
-                        "§7⟹ §eClick to join the queue! §7⟸");
+                        (redstoneServer.getData().getState() != ServerState.OFFLINE ? (redstoneServer.getData().getState() != ServerState.ONLINE ? "§c" + redstoneServer.getServerID() + " is whitelisted.":"§7⟹ §eClick to join the queue! §7⟸"):"§eThis server is offline."));
             }
 
             @Override
             public Material getMaterial(Player player) {
-                return Material.DIAMOND_SWORD;
+                return RedstoneSharedAPI.getServer("HCFactions").getData().getState() != ServerState.OFFLINE ? Material.DIAMOND_AXE:Material.REDSTONE_BLOCK;
             }
 
             @Override
@@ -56,31 +60,35 @@ public class ServerSelectorMenu extends Menu {
 
             @Override
             public void clicked(Player player, int i, ClickType clickType, int i1) {
-                BungeeUtils.send(player, "hcf");
+                if (RedstoneSharedAPI.getServer("HCFactions").getData().getState() != ServerState.OFFLINE) {
+                    BungeeUtils.send(player, "HCFactions");
+                }
             }
         });
 
         buttons.put(15, new Button() {
+
             @Override
             public String getName(Player player) {
-                return "§a§lDeveloper Test";
+                return RedstoneSharedAPI.getServer("Dev-1").getData().getState() != ServerState.OFFLINE ? "§a§lDeveloper Test":"§c§lDeveloper Test";
             }
 
             @Override
             public List<String> getDescription(Player player) {
+                RedstoneServer redstoneServer = RedstoneSharedAPI.getServer("Dev-1");
                 return Arrays.asList(
-                        "§ePlayers: §f({current_players}/{max_players})",
+                        String.format("§ePlayers: §f(%s/%s)", redstoneServer.getData().getOnlinePlayers(), redstoneServer.getData().getMaxPlayers()),
                         "",
                         "§7* §bNew gamemodes coming soon!!",
                         "§7* §bCheck @twitter for regular updates!!",
                         "§7* §bTop secrete clearance ☺",
                         "",
-                        "§7⟹ §eClick to join the queue! §7⟸");
+                        (redstoneServer.getData().getState() != ServerState.OFFLINE ? (redstoneServer.getData().getState() != ServerState.ONLINE ? "§c" + redstoneServer.getServerID() + " is whitelisted.":"§7⟹ §eClick to join the queue! §7⟸"):"§eThis server is offline."));
             }
 
             @Override
             public Material getMaterial(Player player) {
-                return Material.DIAMOND_AXE;
+                return RedstoneSharedAPI.getServer("Dev-1").getData().getState() != ServerState.OFFLINE ? Material.DIAMOND_AXE:Material.REDSTONE_BLOCK;
             }
 
             @Override
@@ -90,7 +98,9 @@ public class ServerSelectorMenu extends Menu {
 
             @Override
             public void clicked(Player player, int i, ClickType clickType, int i1) {
-                BungeeUtils.send(player, "dev");
+                if (RedstoneSharedAPI.getServer("Dev-1").getData().getState() != ServerState.OFFLINE) {
+                    BungeeUtils.send(player, "Dev-1");
+                }
             }
         });
 
@@ -101,5 +111,10 @@ public class ServerSelectorMenu extends Menu {
         }
 
         return buttons;
+    }
+
+    @Override
+    public boolean isAutoUpdate() {
+        return true;
     }
 }

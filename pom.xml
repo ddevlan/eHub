@@ -91,7 +91,14 @@
         <!--bklib-->
         <dependency>
             <groupId>me.ohvalsgod</groupId>
-            <artifactId>bklib</artifactId>
+            <artifactId>bukkit-lib</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--redstone-->
+        <dependency>
+            <groupId>io.github.thatkawaiisam</groupId>
+            <artifactId>redstone</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>

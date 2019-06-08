@@ -1,6 +1,7 @@
 package me.ohvalsgod.ehub.listener;
 
 import me.ohvalsgod.ehub.HubPlugin;
+import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
@@ -24,9 +25,23 @@ public class HubHandler implements Listener {
 
     private HubPlugin plugin;
 
+    private String[] motd;
+
     public HubHandler(HubPlugin plugin) {
         this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
+        motd = new String[] {
+                "&d&m-----------------------------------------------------------",
+                "",
+                "&fWelcome to the &5&oElusiveMC Network&f, {display_name}&f!",
+                "",
+                "&d✦ &5Website:",
+                "&d✦ &5Teamspeak:",
+                "&d✦ &5Store:",
+                "&d✦ &5Twitter:",
+                "",
+                "&d&m-----------------------------------------------------------"
+        };
     }
 
     @EventHandler
@@ -67,13 +82,24 @@ public class HubHandler implements Listener {
 
     @EventHandler
     public void food(FoodLevelChangeEvent event) {
-        event.setCancelled(true);
+        event.setFoodLevel(20);
+    }
+
+    @EventHandler
+    public void quit(PlayerQuitEvent event) {
+        event.setQuitMessage(null);
     }
 
     @EventHandler
     public void join(PlayerJoinEvent event) {
+        event.setJoinMessage(null);
+        event.getPlayer().teleport(event.getPlayer().getWorld().getSpawnLocation());
         event.getPlayer().setWalkSpeed(0.6f);
         plugin.getHubInventory().update(event.getPlayer());
+
+        for (String string : motd) {
+            event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', string.replace("{display_name}", event.getPlayer().getDisplayName())));
+        }
     }
 
     @EventHandler

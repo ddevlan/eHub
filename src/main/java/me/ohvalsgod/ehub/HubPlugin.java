@@ -1,8 +1,9 @@
 package me.ohvalsgod.ehub;
 
 import lombok.Getter;
-import me.ohvalsgod.bklib.BukkitLib;
-import me.ohvalsgod.bklib.board.Assemble;
+import me.ohvalsgod.bukkitlib.BukkitLib;
+import me.ohvalsgod.bukkitlib.board.Assemble;
+import me.ohvalsgod.bukkitlib.command.CommandHandler;
 import me.ohvalsgod.ehub.board.HubAssembleAdapter;
 import me.ohvalsgod.ehub.interactable.InteractableItem;
 import me.ohvalsgod.ehub.inventory.HubInventory;
@@ -15,7 +16,6 @@ public class HubPlugin extends JavaPlugin {
 
     @Getter private static HubPlugin instance;
 
-    @Getter private Assemble assemble;
     @Getter private HubInventory hubInventory;
 
     @Override
@@ -27,14 +27,14 @@ public class HubPlugin extends JavaPlugin {
 
         new HubHandler(instance);
 
-        assemble = new Assemble(instance, new HubAssembleAdapter());
-
-        BukkitLib.getLibrary().setAssemble(assemble);
+        BukkitLib.getLibrary().setAssemble(new Assemble(instance, new HubAssembleAdapter()));
 
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new BungeeHandler());
 
         Bukkit.getOnlinePlayers().forEach(o -> hubInventory.update(o));
+
+        CommandHandler.loadCommandsFromPackage(this, "me.ohvalsgod.ehub.command");
     }
 
     @Override

@@ -1,6 +1,6 @@
 package me.ohvalsgod.ehub.inventory;
 
-import me.ohvalsgod.bklib.item.ItemBuilder;
+import me.ohvalsgod.bukkitlib.item.ItemBuilder;
 import me.ohvalsgod.ehub.HubPlugin;
 import me.ohvalsgod.ehub.interactable.InteractableItem;
 import me.ohvalsgod.ehub.menu.ServerSelectorMenu;

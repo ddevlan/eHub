@@ -1,7 +1,7 @@
 package me.ohvalsgod.ehub.interactable;
 
 import lombok.Getter;
-import me.ohvalsgod.bklib.util.Callback;
+import me.ohvalsgod.bukkitlib.util.Callback;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

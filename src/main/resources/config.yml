@@ -1,0 +1,24 @@
+scoreboard:
+  title: "&5&lElusiveMC Network"
+  lines:
+      - "&5&m--------------------"
+      - "&5&lOnline:"
+      - "{current_players}"
+      - " "
+      - "&5&lRank:"
+      - "{player_group}"
+      - " "
+      - "&5www.elusivemc.net"
+      - "&5&m--------------------"
+
+motd:
+    - "&d&m-----------------------------------------------------------"
+    - ""
+    - "&fWelcome to the &5&oElusiveMC Network&f {display_name}&f!"
+    - ""
+    - "&d✦ &5Website:"
+    - "&d✦ &5Teamspeak:"
+    - "&d✦ &5Store:"
+    - "&d✦ &5Twitter:"
+    - ""
+    - "&d&m-----------------------------------------------------------"

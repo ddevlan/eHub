@@ -97,8 +97,15 @@
         </dependency>
         <!--redstone-->
         <dependency>
-            <groupId>io.github.thatkawaiisam</groupId>
+            <groupId>me.ohvalsgod</groupId>
             <artifactId>redstone</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--bridge-->
+        <dependency>
+            <groupId>me.ohvalsgod</groupId>
+            <artifactId>Bridge</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>

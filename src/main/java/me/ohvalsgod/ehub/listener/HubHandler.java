@@ -21,27 +21,18 @@ import org.bukkit.event.player.*;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.spigotmc.event.entity.EntityDismountEvent;
 
+import java.util.List;
+
 public class HubHandler implements Listener {
 
     private HubPlugin plugin;
 
-    private String[] motd;
+    private List<String> motd;
 
     public HubHandler(HubPlugin plugin) {
         this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
-        motd = new String[] {
-                "&d&m-----------------------------------------------------------",
-                "",
-                "&fWelcome to the &5&oElusiveMC Network&f, {display_name}&f!",
-                "",
-                "&d✦ &5Website:",
-                "&d✦ &5Teamspeak:",
-                "&d✦ &5Store:",
-                "&d✦ &5Twitter:",
-                "",
-                "&d&m-----------------------------------------------------------"
-        };
+        motd = plugin.getConfigHelper().getStringList("motd");
     }
 
     @EventHandler
@@ -126,7 +117,7 @@ public class HubHandler implements Listener {
         event.setCancelled(true);
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void click(InventoryClickEvent event) {
         if (event.getWhoClicked() instanceof Player) {
             if (event.getWhoClicked().getGameMode() != GameMode.CREATIVE) {

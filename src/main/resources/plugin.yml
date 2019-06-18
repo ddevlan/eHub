@@ -2,4 +2,4 @@ name: eHub
 version: ${project.version} (b ${git.commit.id.abbrev})
 author: ohvals
 main: me.ohvalsgod.ehub.HubPlugin
-depend: [bLib, Redstone]
+depend: [bLib, Redstone, Bridge]
